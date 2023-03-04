@@ -5,7 +5,8 @@ date:   2023-03-01 16:40:16
 description: 记录在搭建过程中遇到的坑
 tags: jekyll Ruby
 categories: Operation
-disqus_comments: true
+giscus_comments: true
+related_posts: false
 ---
 # 安装 ruby和Jekyll
 
