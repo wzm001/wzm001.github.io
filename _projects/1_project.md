@@ -1,8 +1,9 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: ESOP
+description: Employee Stock Ownership Plan. 员工股权管理系统
+img: assets/img/7.jpg
+redirect: https://www.uponeshare.com/
 importance: 1
 category: work
 ---

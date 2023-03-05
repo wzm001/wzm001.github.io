@@ -1,9 +1,8 @@
 ---
 layout: page
-title: project 3
-description: a project that redirects to another website
-img: assets/img/7.jpg
-redirect: https://unsplash.com
+title: project 1
+description: a project with a background image
+img: assets/img/12.jpg
 importance: 3
 category: work
 ---
