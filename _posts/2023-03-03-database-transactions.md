@@ -1,12 +1,27 @@
 ---
-layout: post
+layout: distill
 title:  数据库事务
 date:   2023-03-03 10:45:16 +8:00
 description: 数据库事务的相关概念以及处理
 tags: 数据库 事务
 categories: Databases
 giscus_comments: true
-related_posts: false
+
+toc:
+  - name: 事务的概念
+  - name: 事务的ACID属性
+  - name: 事务的隔离级别
+    subsections:
+      - name: 锁
+      - name: 脏写 Dirty Write
+      - name: 脏读 Dirty Read
+      - name: 不可重复读 Fuzzy Read / Non-repeatable Read
+      - name: 幻读 Phantom Read
+      - name: 丢失更新 Lost Update
+      - name: 读偏序 Read Skew
+      - name: 写偏序 Write Skew
+      - name: 隔离级别汇总
+  - name: 总结
 ---
 # 事务的概念
 
