@@ -4,11 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "efd6185bf95cd7c1",
+        "id": "4f5413447c6090a4",
         "type": "tabs",
         "children": [
           {
-            "id": "a59415fad1ea326a",
+            "id": "3fb0dc0749074b05",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-06-snapshot.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9243232fef772880",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-09-gtd.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "72691349e69f655a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2015-05-15-images.md",
+                "file": "2023-03-09-gtd.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2015-05-15-images.md",
+                "file": "2023-03-09-gtd.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2015-05-15-images.md"
+                "file": "2023-03-09-gtd.md"
               }
             }
           }
@@ -146,8 +171,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a59415fad1ea326a",
+  "active": "9243232fef772880",
   "lastOpenFiles": [
+    "2015-05-15-images.md",
+    "2023-03-09-gtd.md",
+    "2023-03-06-snapshot.md",
+    "2023-03-06-2pl.md",
     "2015-07-15-code.md",
     "2015-10-20-math.md",
     "2018-12-22-distill.md",
@@ -156,11 +185,8 @@
     "2022-02-01-redirect.md",
     "2023-03-03-database-transactions.md",
     "2022-12-10-giscus-comments.md",
-    "2023-03-06-snapshot.md",
-    "2023-03-06-2pl.md",
     "2023-03-03-jekyll-doc.md",
     "logo.md",
-    "2015-05-15-images.md",
     "2015-10-20-disqus-comments.md",
     "2020-09-28-twitter.md",
     "2015-03-15-formatting-and-links.md",
