@@ -15,24 +15,35 @@
               "state": {
                 "file": "2023-03-06-snapshot.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           },
           {
-            "id": "9243232fef772880",
+            "id": "29f95c660758f2ca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-09-gtd.md",
+                "file": "2023-03-06-2pl.md",
                 "mode": "source",
-                "source": false
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "34090060e7c3b49a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-03-database-transactions.md",
+                "mode": "source",
+                "source": true
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-09-gtd.md",
+                "file": "2023-03-06-snapshot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-09-gtd.md",
+                "file": "2023-03-06-snapshot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-09-gtd.md"
+                "file": "2023-03-06-snapshot.md"
               }
             }
           }
@@ -159,19 +170,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9243232fef772880",
+  "active": "3fb0dc0749074b05",
   "lastOpenFiles": [
-    "2015-05-15-images.md",
-    "2023-03-09-gtd.md",
-    "2023-03-06-snapshot.md",
     "2023-03-06-2pl.md",
+    "2023-03-06-snapshot.md",
+    "2023-03-03-database-transactions.md",
+    "2023-03-09-gtd.md",
+    "2015-05-15-images.md",
     "2015-07-15-code.md",
     "2015-10-20-math.md",
     "2018-12-22-distill.md",
     "2020-09-28-github-metadata.md",
     "2021-07-04-diagrams.md",
     "2022-02-01-redirect.md",
-    "2023-03-03-database-transactions.md",
     "2022-12-10-giscus-comments.md",
     "2023-03-03-jekyll-doc.md",
     "logo.md",
