@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: distill
 title: MySQL 的索引结构
 date: 2023-03-15 11:00:00+0800
 description: MySQL 的索引实现细节
