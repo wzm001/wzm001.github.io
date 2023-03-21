@@ -8,42 +8,67 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3fb0dc0749074b05",
+            "id": "b4a2a2cf0d9642f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-06-snapshot.md",
+                "file": "2023-03-11-mysql-trans.md",
                 "mode": "source",
                 "source": true
               }
             }
           },
           {
-            "id": "29f95c660758f2ca",
+            "id": "dbfdcd5baf80d223",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-06-2pl.md",
+                "file": "2023-03-15-mysql-index.md",
                 "mode": "source",
                 "source": true
               }
             }
           },
           {
-            "id": "34090060e7c3b49a",
+            "id": "f8bf68b8d639fb30",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-03-database-transactions.md",
+                "file": "2023-03-17-mysql-optimization.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "cd65e28afecb9dfc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-09-gtd.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "8071c1a43f703a20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-17-willpower.md",
                 "mode": "source",
                 "source": true
               }
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -109,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-06-snapshot.md",
+                "file": "2023-03-17-willpower.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-06-snapshot.md",
+                "file": "2023-03-17-willpower.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-06-snapshot.md"
+                "file": "2023-03-17-willpower.md"
               }
             }
           }
@@ -170,16 +195,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3fb0dc0749074b05",
+  "active": "8071c1a43f703a20",
   "lastOpenFiles": [
-    "2023-03-06-2pl.md",
-    "2023-03-06-snapshot.md",
-    "2023-03-03-database-transactions.md",
     "2023-03-09-gtd.md",
+    "2023-03-17-willpower.md",
+    "2023-03-17-mysql-optimization.md",
+    "2023-03-15-mysql-index.md",
+    "2018-12-22-distill.md",
+    "2015-10-20-math.md",
+    "2023-03-11-mysql-trans.md",
+    "2020-09-28-twitter.md",
+    "2023-03-06-snapshot.md",
+    "2023-03-06-2pl.md",
+    "2023-03-03-database-transactions.md",
     "2015-05-15-images.md",
     "2015-07-15-code.md",
-    "2015-10-20-math.md",
-    "2018-12-22-distill.md",
     "2020-09-28-github-metadata.md",
     "2021-07-04-diagrams.md",
     "2022-02-01-redirect.md",
@@ -187,7 +217,6 @@
     "2023-03-03-jekyll-doc.md",
     "logo.md",
     "2015-10-20-disqus-comments.md",
-    "2020-09-28-twitter.md",
     "2015-03-15-formatting-and-links.md",
     "().md"
   ]
