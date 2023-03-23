@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4f5413447c6090a4",
+        "id": "12ae0a601d98781c",
         "type": "tabs",
         "children": [
           {
-            "id": "b4a2a2cf0d9642f1",
+            "id": "292d9b2aec2a700b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,7 +20,7 @@
             }
           },
           {
-            "id": "dbfdcd5baf80d223",
+            "id": "ddc65f24942a26cf",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,7 +32,7 @@
             }
           },
           {
-            "id": "f8bf68b8d639fb30",
+            "id": "d1497fd4157b8c63",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -42,33 +42,9 @@
                 "source": true
               }
             }
-          },
-          {
-            "id": "cd65e28afecb9dfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-03-09-gtd.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "8071c1a43f703a20",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-03-17-willpower.md",
-                "mode": "source",
-                "source": true
-              }
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -134,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-17-willpower.md",
+                "file": "2023-03-17-mysql-optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-17-willpower.md",
+                "file": "2023-03-17-mysql-optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-17-willpower.md"
+                "file": "2023-03-17-mysql-optimization.md"
               }
             }
           }
@@ -195,13 +171,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8071c1a43f703a20",
+  "active": "d1497fd4157b8c63",
   "lastOpenFiles": [
+    "2023-03-15-mysql-index.md",
+    "2023-03-17-mysql-optimization.md",
+    "2023-03-11-mysql-trans.md",
+    "2023-03-03-jekyll-doc.md",
     "2023-03-09-gtd.md",
     "2023-03-17-willpower.md",
-    "2023-03-15-mysql-index.md",
-    "2023-03-11-mysql-trans.md",
-    "2023-03-17-mysql-optimization.md",
     "2018-12-22-distill.md",
     "2015-10-20-math.md",
     "2020-09-28-twitter.md",
@@ -214,7 +191,6 @@
     "2021-07-04-diagrams.md",
     "2022-02-01-redirect.md",
     "2022-12-10-giscus-comments.md",
-    "2023-03-03-jekyll-doc.md",
     "logo.md",
     "2015-10-20-disqus-comments.md",
     "2015-03-15-formatting-and-links.md",
