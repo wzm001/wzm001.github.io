@@ -1,4 +1,5 @@
 {
   "showLineNumber": true,
-  "livePreview": false
+  "livePreview": true,
+  "showFrontmatter": false
 }
