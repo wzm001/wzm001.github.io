@@ -8,7 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0e0cb876dba151f8",
+            "id": "cacb0e9864f86504",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "esop-sign.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "267e18e89673f910",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -43,7 +55,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -170,12 +183,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0e0cb876dba151f8",
+  "active": "267e18e89673f910",
   "lastOpenFiles": [
+    "esop-sign.md",
     "esop-push.md",
-    "esop-kms.md",
     "esop.md",
-    "esop-k.md",
-    "esop-sign.md"
+    "6_project.md",
+    "5_project.md",
+    "esop-kms.md",
+    "esop-k.md"
   ]
 }

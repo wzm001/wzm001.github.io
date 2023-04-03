@@ -1,81 +1,39 @@
 ---
 layout: page
-title: ESOP
-description: Employee Stock Ownership Plan. 员工股权管理系统
+title: esop
+description: 员工股权管理系统
 img: assets/img/esop.png
-redirect: https://www.uponeshare.com/
 importance: 1
-category: work
+category: 工作
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+[ESOP](https://www.uponeshare.com/) 是我们主推的期权托管 SaaS 服务，面向企业和员工提供完整的期权托管服务，负责处理期权从授予、成熟、行权的全生命周期业务。
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+ESOP 整体分为 3 个服务，分别是
+- 股权激励系统 esop-admin，供企业管理员使用，负责发放和管理期权；
+- 行权管理系统 esop-staff，供企业员工使用，负责查看和行权；
+- 内部管理系统 esop-bos，供 ESOP 运营人员使用，负责客户管理等后台业务；
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+这三个主服务之下，是 esop 的一系列微服务架构，整体的架构如下图所示：
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/esop-arch.png" title="push node" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+    ESOP 的服务架构
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
+各个微服务之间通过共享数据存储和 RPC 框架通信。
 
+ESOP 的核心业务概念是 *授予（Grant）*。授予当作动词理解，即公司授予员工某些权益和激励的动作。授予作为名词理解，代表员工被赋予的权益，公司通过授予激励员工做出更大的贡献。
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+授予有多种形式的载体，常见的有：
+- 期权 Option，一般是上市前公司进行授予，许诺员工在将来获取一定的公司权益；
+- 限制性股票 RS，上市后公司进行授予，通常会在交易和行权上进行一定的限制，具体还可以细分为第一类限制性股票和第二类限制性股票，在处理上有一些区别；
+- 现金，也有公司以现金的方式授予员工激励；
 
+授予通常承诺的是未来的收益，因此伴随授予的必不可少的业务就是成熟规则，用来规定授予分几个批次成熟，每次成熟间隔时间是多久，成熟比例是多少等等。一般情况下，成熟的授予即可以通过行权转换为一定的收益。
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
+ESOP 的其他细分业务非常多，这里就不展开讲解了。

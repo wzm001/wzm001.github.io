@@ -3,8 +3,8 @@ layout: page
 title: esop-sign
 description: 在线签署服务模块
 img: assets/img/sign.png
-importance: 3
-category: work
+importance: 4
+category: 工作
 ---
 
 在线签署服务是 ESOP 业务依赖的重要服务，签署业务贯穿了整个 ESOP 服务，从公司发放授予、到授予成熟行权，整个过程都需要员工签署一系列合同文件，通过法律手段保护公司和员工的权益。
@@ -25,7 +25,9 @@ ESOP 使用上上签的混合云方案接入签署服务，混合云是指上上
         {% include figure.html path="assets/img/bestsign.png" title="bestsign" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-上上签混合云架构
+<div class="caption">
+    上上签混合云架构
+</div>
 
 # 签署服务的设计
 
@@ -38,7 +40,9 @@ ESOP 使用上上签的混合云方案接入签署服务，混合云是指上上
         {% include figure.html path="assets/img/esop-sign.png" title="esop sign" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-Esop-sign 基于上上签的架构
+<div class="caption">
+    Esop-sign 基于上上签的架构
+</div>
 
 签署服务将 ESOP 的签署业务规范化为三个模块。
 
@@ -75,7 +79,11 @@ Esop-sign 基于上上签的架构
         {% include figure.html path="assets/img/sign-file.png" title="esop sign file" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-签署服务如何处理文件
+<div class="caption">
+    签署服务如何处理文件
+</div>
+
+
 
 具体的处理逻辑：
 <div class="row">

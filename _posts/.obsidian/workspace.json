@@ -27,8 +27,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2023-03-17-mysql-optimization-sql.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2023-03-17-mysql-optimization-sql.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2023-03-17-mysql-optimization-sql.md"
+              }
             }
           }
         ]
@@ -151,7 +154,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d18efeb1d7bde23c",
+  "active": "9d09e0d59aa357c0",
   "lastOpenFiles": [
     "Untitled",
     "2023-03-17-mysql-optimization-sql.md",
