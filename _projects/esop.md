@@ -2,7 +2,7 @@
 layout: page
 title: ESOP
 description: Employee Stock Ownership Plan. 员工股权管理系统
-img: assets/img/7.jpg
+img: assets/img/esop.png
 redirect: https://www.uponeshare.com/
 importance: 1
 category: work

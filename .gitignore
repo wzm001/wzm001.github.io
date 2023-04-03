@@ -1,5 +1,6 @@
 _site
 _posts/.obsidian
+_projects/.obsidian
 .bundle
 .sass-cache
 .jekyll-cache

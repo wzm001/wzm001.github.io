@@ -1,80 +1,50 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: esop-kms
+description: 通用的密钥管理服务
+img: assets/img/kms.png
+importance: 4
+category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+ESOP 对数据的安全性要求很高，有很多敏感数据都不允许明文存储，因此在运行过程中需要处理大量的数据加解密。为了便于管理和维护，提高加解密服务的安全性，设计了 KMS 密钥管理服务，为 ESOP 提供统一的、可靠的加解密服务。服务主要解决两个问题：
+1. 统一管理密钥。密钥分散在配置文件中不方便管理，并且安全性差；
+2. 本地加解密。通过 RPC 的方式进行加解密会拉低系统的吞吐量，影响性能；
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+# KMS 的基础架构
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+首先需要明确 KMS 的几个核心概念：
+
+- MK：Master Key，KMS 本身的根密钥，负责加密 KMS 自身的核心信息，这个密钥的管理至关重要，可以将之分为多个部分由多人管理，或者使用硬件设备进行管理；
+- CMK：Customer Master Key，客户主密钥，对应一个业务模块，由管理员负责发放，在 ESOP 业务中，每个微服务对应一个 CMK，CMK 负责存储业务方的敏感信息，如 DEK 链；
+- DEK：Data Encrypt Key，数据加密密钥，负责业务方具体的数据加解密，由业务方请求 KMS 服务生成，保存在业务本地，之后的加解密都在业务本地进行；基于安全性考量，DEK 建议定期修改。
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/key-chain.png" title="密钥链" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
+密钥的链式管理
+
+## 本地加解密流程
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/local-encrypt.png" title="本地加解密" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+本地加解密
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal its glory in the next row of images.
+### 加密过程：
 
+1. 业务服务通过 kms 获取到数据加密密钥 dek；
+2. 使用 dek 将对应的数据加密；
+3. 将加密后的数据和加密后的 dek 存储在本地；
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### 解密过程：
+
+1. 业务服务通过 kms 解密得到密钥 dek；
+2. 使用 dek 解密数据；
 
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
