@@ -29,7 +29,7 @@ giscus_comments: true
 | type | access_type | 访问数据的类型。具体见下面的表格
 | possible_keys | possible_keys | 可供选择的索引，如果此列为 NULL，表示查询没有可用使用的索引，这种情况下需要检查 WHERE 条件是否有适用的索引
 | key | key | 实际选择的索引，这里列出的值可能不包含在 `possible_keys` 列中，这意味着 WHERE 条件没有用到索引，但查询的列是从索引中获取的，也就是索引覆盖的场景。<br />如果要强制 MySQL 使用或忽略 `possible_keys` 列出的索引，可以使用 `FORCE INDEX`、`USE INDEX`或`IGNORE INDEX`  
-| key_len | key_len | 所选索引的长度
+| key_len | key_len | 索引使用的字节数
 | ref | ref | 显示将哪些列或常量与`key`列中的索引值进行比较以从表中选择行。如果值为 `func`，则使用的值是某个函数的结果。可以在 `EXPLAIN` 之后使用 `SHOW WARNINGS` 查看扩展输出。该函数实际可能是一个运算符，例如算术运算符
 | rows | rows | 估计要检查的行，对于 InnoDB 来说，这个值是估计的，可能并不准确
 | filtered | filtered | 按表的查询条件过滤的行百分比，最大为 100，表示没有发生行过滤
@@ -70,7 +70,7 @@ select * from tb1_name where primary_key_part1 = 1 and primary_key_part2 = 2;
 
 #### eq_ref
 
-对于先前表中的每个组合，都从该表中读取一行。这是除了 `system` 和 `const` 之外最好的连接类型。当连接使用索引的所有部分并且索引是 `PRIMARY KEY` 或 `UNIQUE NOT NULL` 类型时使用。
+索引查找。对于先前表中的每个组合，都从该表中读取一行。这是除了 `system` 和 `const` 之外最好的连接类型。当连接使用索引的所有部分并且索引是 `PRIMARY KEY` 或 `UNIQUE NOT NULL` 类型时使用。
 
 `eq_ref` 可用于使用 `=` 运算符进行比较的索引列。比较值可以是常量或表达式。例如：
 ```sql
@@ -84,7 +84,7 @@ select * from ref_table, other_table
 
 #### ref
 
-对于先前表中行的每个组合，从该表中读取具有匹配索引值的所有行。如果连接仅使用键的最左前缀，或者如果键不是 `PRIMARY KEY` 或 `UNIQUE` 索引（也就是说，如果连接不能根据键值选择耽搁行），则使用 `ref`。如果使用的键值匹配几行，这是一个很好的连接类型。例如：
+索引查找。对于先前表中行的每个组合，从该表中读取具有匹配索引值的所有行。如果连接仅使用键的最左前缀，或者如果键不是 `PRIMARY KEY` 或 `UNIQUE` 索引（也就是说，如果连接不能根据键值选择耽搁行），则使用 `ref`。如果使用的键值匹配几行，这是一个很好的连接类型。例如：
 ```sql
 select * from ref_table where key_column = expr;
 
@@ -148,11 +148,12 @@ Extra 列在不同的场景下展示的信息很多。这里只列出一些常�
 
 #### Using filesort
 
-MySQL 必须执行额外的数据传递，以完成结果的检索排序。这意味着查询效率低下。
+MySQL 必须执行额外的数据传递，以完成结果的检索排序。而不是按照索引次序从表中读取行。这意味着查询效率低下。
+MySQL 有两种文件排序算法，都可以在内存或磁盘上完成，因此出现这个信息并不意味着一定使用了磁盘排序。
 
 #### Using index
 
-仅使用索引树中的信息查询，不需要执行额外的查找。
+仅使用索引树中的信息查询，不需要执行额外的查找。也就是使用了覆盖索引优化。
 
 #### Using index condition
 
@@ -168,5 +169,5 @@ MySQL 必须执行额外的数据传递，以完成结果的检索排序。这�
 
 #### Using where
 
-`WHERE` 子句用于限制那些行与下一个表匹配并发送给客户端。除非你打算查询全表，否则如果 `Extra` 的值不是 `Using where` 且连接类型是 `ALL` 或 `index` ，说明你的查询有问题。
+意味着 MySQL 服务器将在存储引擎检索行之后再进行过滤。
 
