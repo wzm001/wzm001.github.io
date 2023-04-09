@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "bd41f6ce3c883e4e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-06-redo-undo.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-01-mq.md",
+                "file": "2023-04-06-redo-undo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-01-mq.md",
+                "file": "2023-04-06-redo-undo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-01-mq.md"
+                "file": "2023-04-06-redo-undo.md"
               }
             }
           }
@@ -146,17 +159,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c90dda705a7af226",
+  "active": "bd41f6ce3c883e4e",
   "lastOpenFiles": [
-    "2023-03-17-willpower.md",
     "2023-04-01-mq.md",
+    "2023-04-06-redo-undo.md",
+    "2023-03-06-snapshot.md",
+    "2023-03-11-mysql-trans.md",
+    "2023-03-15-mysql-index.md",
+    "2023-03-17-willpower.md",
     "2023-03-17-mysql-optimization-sql.md",
     "2023-03-09-gtd.md",
     "Untitled",
     "`select_type`.md",
-    "2023-03-15-mysql-index.md",
-    "2023-03-11-mysql-trans.md",
-    "2023-03-06-snapshot.md",
     "2023-03-06-2pl.md",
     "2023-03-03-jekyll-doc.md",
     "2023-03-03-database-transactions.md",
