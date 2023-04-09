@@ -25,14 +25,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-06-redo-undo.md",
+                "file": "2023-04-06-mysql-log.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4dff0ed34e2b9c12",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-09-rabbitmq.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9baa8b7d0346f598",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-09-kafka.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-06-redo-undo.md",
+                "file": "2023-04-09-kafka.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-06-redo-undo.md",
+                "file": "2023-04-09-kafka.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-06-redo-undo.md"
+                "file": "2023-04-09-kafka.md"
               }
             }
           }
@@ -159,10 +183,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bd41f6ce3c883e4e",
+  "active": "9baa8b7d0346f598",
   "lastOpenFiles": [
+    "2023-04-09-rabbitmq.md",
+    "2023-04-06-mysql-log.md",
     "2023-04-01-mq.md",
-    "2023-04-06-redo-undo.md",
+    "2023-04-09-kafka.md",
     "2023-03-06-snapshot.md",
     "2023-03-11-mysql-trans.md",
     "2023-03-15-mysql-index.md",
@@ -185,7 +211,6 @@
     "2022-12-10-giscus-comments.md",
     "logo.md",
     "2015-10-20-disqus-comments.md",
-    "2015-03-15-formatting-and-links.md",
-    "().md"
+    "2015-03-15-formatting-and-links.md"
   ]
 }
