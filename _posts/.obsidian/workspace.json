@@ -8,43 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c90dda705a7af226",
+            "id": "ba811b023cbc81b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-01-mq.md",
+                "file": "2023-04-10-es.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "bd41f6ce3c883e4e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-04-06-mysql-log.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9baa8b7d0346f598",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-04-09-kafka.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8024ccc4f002f109",
+            "id": "82e58b8258fd90b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -55,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-09-kafka.md",
+                "file": "2023-04-10-es.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-09-kafka.md",
+                "file": "2023-04-10-es.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-09-kafka.md"
+                "file": "2023-04-10-es.md"
               }
             }
           }
@@ -183,16 +158,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9baa8b7d0346f598",
+  "active": "ba811b023cbc81b7",
   "lastOpenFiles": [
     "2023-04-09-rabbitmq.md",
-    "2023-04-09-kafka.md",
-    "2023-04-01-mq.md",
+    "2023-04-10-es.md",
+    "2023-03-17-willpower.md",
     "2023-04-06-mysql-log.md",
+    "2023-04-01-mq.md",
+    "2023-04-09-kafka.md",
     "2023-03-06-snapshot.md",
     "2023-03-11-mysql-trans.md",
     "2023-03-15-mysql-index.md",
-    "2023-03-17-willpower.md",
     "2023-03-17-mysql-optimization-sql.md",
     "2023-03-09-gtd.md",
     "Untitled",
@@ -210,7 +186,6 @@
     "2022-02-01-redirect.md",
     "2022-12-10-giscus-comments.md",
     "logo.md",
-    "2015-10-20-disqus-comments.md",
-    "2015-03-15-formatting-and-links.md"
+    "2015-10-20-disqus-comments.md"
   ]
 }
