@@ -8,11 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9bf78e97b2bc3583",
+            "id": "5f992fc6221acd3b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-09-kafka.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2023-04-09-kafka.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2023-04-09-kafka.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2023-04-09-kafka.md"
+              }
             }
           }
         ]
@@ -138,18 +146,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9bf78e97b2bc3583",
+  "active": "5f992fc6221acd3b",
   "lastOpenFiles": [
     "2023-04-09-rabbitmq.md",
     "2023-04-10-es.md",
+    "2023-04-11-netty.md",
+    "2023-03-17-mysql-optimization-sql.md",
+    "2023-04-09-kafka.md",
+    "2023-04-11-spring.md",
     "2023-03-17-willpower.md",
     "2023-04-06-mysql-log.md",
     "2023-04-01-mq.md",
-    "2023-04-09-kafka.md",
     "2023-03-06-snapshot.md",
     "2023-03-11-mysql-trans.md",
     "2023-03-15-mysql-index.md",
-    "2023-03-17-mysql-optimization-sql.md",
     "2023-03-09-gtd.md",
     "Untitled",
     "`select_type`.md",
@@ -164,8 +174,6 @@
     "2020-09-28-github-metadata.md",
     "2021-07-04-diagrams.md",
     "2022-02-01-redirect.md",
-    "2022-12-10-giscus-comments.md",
-    "logo.md",
-    "2015-10-20-disqus-comments.md"
+    "2022-12-10-giscus-comments.md"
   ]
 }
