@@ -8,18 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "94205f861bd14707",
+            "id": "8ac444eb81fe48c6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-15-java-nio.md",
+                "file": "2023-04-19-rate-limiter.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "afbc201a372525c6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-21-downgrade-circuitbreaker.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-15-java-nio.md",
+                "file": "2023-04-21-downgrade-circuitbreaker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-15-java-nio.md",
+                "file": "2023-04-21-downgrade-circuitbreaker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-15-java-nio.md"
+                "file": "2023-04-21-downgrade-circuitbreaker.md"
               }
             }
           }
@@ -146,16 +159,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "94205f861bd14707",
+  "active": "afbc201a372525c6",
   "lastOpenFiles": [
-    "2023-04-01-mq.md",
+    "2023-04-19-rate-limiter.md",
+    "2023-04-21-downgrade-circuitbreaker.md",
     "2023-04-15-java-nio.md",
     "2023-04-13-rpc.md",
+    "2023-04-10-es.md",
+    "2023-04-01-mq.md",
     "2023-04-12-spring.md",
     "2023-04-09-kafka.md",
     "2023-04-09-rabbitmq.md",
     "2023-03-03-database-transactions.md",
-    "2023-04-10-es.md",
     "2023-04-11-netty.md",
     "2023-03-17-mysql-optimization-sql.md",
     "2023-04-11-spring.md",
@@ -172,8 +187,6 @@
     "2018-12-22-distill.md",
     "2015-10-20-math.md",
     "2020-09-28-twitter.md",
-    "2015-05-15-images.md",
-    "2015-07-15-code.md",
-    "2020-09-28-github-metadata.md"
+    "2015-05-15-images.md"
   ]
 }
