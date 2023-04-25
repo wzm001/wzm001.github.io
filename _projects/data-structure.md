@@ -1,9 +1,9 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
-importance: 3
+title: data-structure
+description: 数据结构和常用算法
+importance: 1
+redirect: https://github.com/wzm001/data-structure
 category: 个人
 ---
 
