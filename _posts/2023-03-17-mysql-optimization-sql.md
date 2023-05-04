@@ -1,11 +1,19 @@
 ---
-layout: post
+layout: distill
 title: MySQL 性能优化之 EXPLAIN 关键字
 date: 2023-03-17 10:15:00+0800
 description: MySQL 的优化操作
 tags: MySQL 性能优化 EXPLAIN
 categories: Database MySQL
 giscus_comments: true
+
+toc:
+  - name: EXPLAIN 关键字
+    subsections:
+      -name: EXPLAIN 的输出列
+  - name: 优化实例
+    subsections:
+      -name: SQL 1
 ---
 
 本系列分为多个主题，主要参考学习了 MySQL 参考手册中关于[优化](https://dev.mysql.com/doc/refman/8.0/en/optimization.html) 的相关章节，重点整理工作中经常遇到的内容。
@@ -171,3 +179,6 @@ MySQL 有两种文件排序算法，都可以在内存或磁盘上完成，因�
 
 意味着 MySQL 服务器将在存储引擎检索行之后再进行过滤。
 
+
+
+# 优化实例
