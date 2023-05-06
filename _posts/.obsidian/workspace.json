@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "53623017e611b4ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-04-22-zookeeper.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-09-kafka.md",
+                "file": "2023-04-22-zookeeper.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-09-kafka.md",
+                "file": "2023-04-22-zookeeper.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-09-kafka.md"
+                "file": "2023-04-22-zookeeper.md"
               }
             }
           }
@@ -146,8 +159,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "99ca65d21127fba6",
+  "active": "53623017e611b4ae",
   "lastOpenFiles": [
+    "2023-05-05-cache-problems.md",
+    "2023-04-09-kafka.md",
     "2023-03-17-mysql-optimization-sql.md",
     "2023-04-01-mq.md",
     "2023-03-06-snapshot.md",
@@ -155,7 +170,6 @@
     "2023-04-22-zookeeper.md",
     "2023-04-21-downgrade-circuitbreaker.md",
     "2023-04-22-distributed-system.md",
-    "2023-04-09-kafka.md",
     "2023-04-20-test.md",
     "2023-04-19-rate-limiter.md",
     "2023-04-15-java-nio.md",
@@ -173,7 +187,6 @@
     "Untitled",
     "`select_type`.md",
     "2023-03-06-2pl.md",
-    "2023-03-03-jekyll-doc.md",
-    "2018-12-22-distill.md"
+    "2023-03-03-jekyll-doc.md"
   ]
 }
