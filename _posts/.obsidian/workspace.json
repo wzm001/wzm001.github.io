@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "279a40eaec259f8b",
+        "id": "a6063834a7e3bf16",
         "type": "tabs",
         "children": [
           {
-            "id": "99ca65d21127fba6",
+            "id": "aac7ab1fbf2827b2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-09-kafka.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "53623017e611b4ae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-04-22-zookeeper.md",
+                "file": "2023-05-06-resume.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-22-zookeeper.md",
+                "file": "2023-05-06-resume.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-22-zookeeper.md",
+                "file": "2023-05-06-resume.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-22-zookeeper.md"
+                "file": "2023-05-06-resume.md"
               }
             }
           }
@@ -159,15 +146,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "53623017e611b4ae",
+  "active": "aac7ab1fbf2827b2",
   "lastOpenFiles": [
-    "2023-05-05-cache-problems.md",
     "2023-04-09-kafka.md",
+    "2023-04-22-zookeeper.md",
+    "2023-05-06-resume.md",
+    "2023-05-05-cache-problems.md",
     "2023-03-17-mysql-optimization-sql.md",
     "2023-04-01-mq.md",
     "2023-03-06-snapshot.md",
     "2023-03-15-mysql-index.md",
-    "2023-04-22-zookeeper.md",
     "2023-04-21-downgrade-circuitbreaker.md",
     "2023-04-22-distributed-system.md",
     "2023-04-20-test.md",
@@ -186,7 +174,6 @@
     "2023-03-09-gtd.md",
     "Untitled",
     "`select_type`.md",
-    "2023-03-06-2pl.md",
-    "2023-03-03-jekyll-doc.md"
+    "2023-03-06-2pl.md"
   ]
 }
