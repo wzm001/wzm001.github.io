@@ -9,16 +9,11 @@ category: 工作
 
 [ESOP](https://www.uponeshare.com/) 是我们主推的期权托管 SaaS 服务，面向企业和员工提供完整的期权托管服务，负责处理期权从授予、成熟、行权的全生命周期业务。
 
-ESOP 整体分为 3 个服务，分别是
-- 股权激励系统 esop-admin，供企业管理员使用，负责发放和管理期权；
-- 行权管理系统 esop-staff，供企业员工使用，负责查看和行权；
-- 内部管理系统 esop-bos，供 ESOP 运营人员使用，负责客户管理等后台业务；
-
-这三个主服务之下，是 esop 的一系列微服务架构，整体的架构如下图所示：
+ESOP 的整体的架构如下图所示：
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/esop-arch.png" title="push node" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/esop-arch.png" title="push node" class="img-fluid rounded z-depth-1"  zoomable=true %}
     </div>
 </div>
 <div class="caption">
