@@ -15,7 +15,7 @@
               "state": {
                 "file": "esop.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           }
@@ -62,6 +62,14 @@
             "type": "leaf",
             "state": {
               "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "34e481344a82067a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
               "state": {}
             }
           }
