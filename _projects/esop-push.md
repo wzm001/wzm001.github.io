@@ -1,11 +1,11 @@
----
-layout: page
-title: esop-push
-description: 通用的业务消息推送系统
-img: assets/img/msg-delivery.png
-importance: 2
-category: 工作
----
+#---
+#layout: page
+#title: esop-push
+#description: 通用的业务消息推送系统
+#img: assets/img/msg-delivery.png
+#importance: 2
+#category: 工作
+#---
 
 Esop-Push 是一个消息分发系统，支持推 / 拉 两种模式分发消息，负责将业务消息分发到第三方。
 

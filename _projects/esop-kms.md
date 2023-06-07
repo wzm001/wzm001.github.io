@@ -1,11 +1,11 @@
----
-layout: page
-title: esop-kms
-description: 通用的密钥管理服务
-img: assets/img/kms.png
-importance: 4
-category: 工作
----
+#---
+#layout: page
+#title: esop-kms
+#description: 通用的密钥管理服务
+#img: assets/img/kms.png
+#importance: 4
+#category: 工作
+#---
 
 ESOP 对数据的安全性要求很高，有很多敏感数据都不允许明文存储，因此在运行过程中需要处理大量的数据加解密。为了便于管理和维护，提高加解密服务的安全性，设计了 KMS 密钥管理服务，为 ESOP 提供统一的、可靠的加解密服务。服务主要解决两个问题：
 1. 统一管理密钥。密钥分散在配置文件中不方便管理，并且安全性差；

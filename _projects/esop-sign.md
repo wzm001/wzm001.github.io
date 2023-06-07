@@ -1,11 +1,11 @@
----
-layout: page
-title: esop-sign
-description: 在线签署服务模块
-img: assets/img/sign.png
-importance: 3
-category: 工作
----
+#---
+#layout: page
+#title: esop-sign
+#description: 在线签署服务模块
+#img: assets/img/sign.png
+#importance: 3
+#category: 工作
+#---
 
 在线签署服务是 ESOP 业务依赖的重要服务，签署业务贯穿了整个 ESOP 服务，从公司发放授予、到授予成熟行权，整个过程都需要员工签署一系列合同文件，通过法律手段保护公司和员工的权益。
 
