@@ -3,5 +3,6 @@
     "subTitle":"行者常至，为者常成",
     "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
     "GMEEK_VERSION":"last",
-    "singlePage":["about"]
+    "singlePage":["about"],
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>"
 }
