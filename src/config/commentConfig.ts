@@ -15,3 +15,6 @@ export const commentConfig = {
     visitorCount: false,
   },
 } as const satisfies CommentConfig;
+
+export const isCommentViewCountEnabled =
+  commentConfig.enabled && commentConfig.type === "artalk" && commentConfig.artalk.visitorCount;

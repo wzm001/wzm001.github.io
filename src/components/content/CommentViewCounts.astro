@@ -1,8 +1,8 @@
 ---
-import { commentConfig } from "@/config/commentConfig";
+import { commentConfig, isCommentViewCountEnabled } from "@/config/commentConfig";
 import { siteConfig } from "@/config/siteConfig";
 
-const artalkConfig = commentConfig.enabled && commentConfig.type === "artalk" ? commentConfig.artalk : null;
+const artalkConfig = isCommentViewCountEnabled ? commentConfig.artalk : null;
 ---
 
 {

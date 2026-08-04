@@ -1,6 +1,7 @@
 ---
 import Icon from "@/components/ui/Icon.astro";
 import TagList from "@/components/ui/TagList.astro";
+import { isCommentViewCountEnabled } from "@/config/commentConfig";
 import { getTranslator, I18nKey } from "@/i18n";
 import { formatPostDate, getPostHref, type PostEntry } from "@/utils/posts";
 
@@ -44,12 +45,21 @@ const href = getPostHref(post);
         >
         {category}
       </span>
-      <span class="inline-flex w-36 flex-none items-center gap-2 text-sm text-muted">
-        <span class="grid size-7 place-items-center rounded-md bg-accent-soft text-accent-strong"
-          ><Icon name="chart" size={16} /></span
-        >
-        <span>{t(I18nKey.postViews)} <span aria-live="polite" data-post-card-view-value>-</span></span>
-      </span>
+      {
+        isCommentViewCountEnabled && (
+          <span class="inline-flex w-36 flex-none items-center gap-2 text-sm text-muted">
+            <span class="grid size-7 place-items-center rounded-md bg-accent-soft text-accent-strong">
+              <Icon name="chart" size={16} />
+            </span>
+            <span>
+              {t(I18nKey.postViews)}{" "}
+              <span aria-live="polite" data-post-card-view-value>
+                -
+              </span>
+            </span>
+          </span>
+        )
+      }
       {draft && <span class="rounded-panel bg-draft-soft px-2 py-1 text-xs text-draft">{t(I18nKey.postDraft)}</span>}
     </div>
 

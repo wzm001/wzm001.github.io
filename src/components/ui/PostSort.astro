@@ -1,5 +1,6 @@
 ---
 import Icon from "@/components/ui/Icon.astro";
+import { isCommentViewCountEnabled } from "@/config/commentConfig";
 import { getTranslator, I18nKey } from "@/i18n";
 
 interface Props {
@@ -39,15 +40,19 @@ const menuId = `${targetId}-sort-menu`;
     >
       {t(I18nKey.sortLatest)}
     </button>
-    <button
-      class="block w-full cursor-pointer rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:bg-accent-soft aria-pressed:text-accent-strong"
-      type="button"
-      aria-pressed="false"
-      data-post-sort-label={t(I18nKey.sortMostRead)}
-      data-post-sort-option="views"
-    >
-      {t(I18nKey.sortMostRead)}
-    </button>
+    {
+      isCommentViewCountEnabled && (
+        <button
+          class="block w-full cursor-pointer rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:bg-accent-soft aria-pressed:text-accent-strong"
+          type="button"
+          aria-pressed="false"
+          data-post-sort-label={t(I18nKey.sortMostRead)}
+          data-post-sort-option="views"
+        >
+          {t(I18nKey.sortMostRead)}
+        </button>
+      )
+    }
   </div>
 </div>
 
