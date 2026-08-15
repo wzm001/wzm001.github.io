@@ -1,5 +1,6 @@
 ---
 title: "文章标题"
+slug: "title"
 description: "用于文章列表和搜索引擎摘要的简短描述。"
 publishedAt: 2024-06-19
 # updatedAt: 2026-07-12
