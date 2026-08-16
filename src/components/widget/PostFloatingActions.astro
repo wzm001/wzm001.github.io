@@ -20,7 +20,7 @@ const t = getTranslator();
         aria-label={t(I18nKey.postQuickActions)}
       >
         <button
-          class="grid h-11 w-12 cursor-pointer place-items-center rounded-panel border border-border-control bg-panel text-accent-strong transition-colors hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          class="grid h-11 w-12 cursor-pointer place-items-center rounded-panel border border-border bg-panel text-accent-strong transition-colors hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
           type="button"
           aria-label={t(I18nKey.backToTop)}
           data-back-to-top
@@ -40,14 +40,21 @@ const t = getTranslator();
 
     const actions = document.querySelector<HTMLElement>("[data-post-floating-actions]");
     const backToTop = actions?.querySelector<HTMLButtonElement>("[data-back-to-top]");
+    const readingContent = document.querySelector<HTMLElement>("[data-reading-content]");
 
-    if (!actions || !backToTop) return;
+    if (!actions || !backToTop || !readingContent) return;
+
+    actions.style.removeProperty("bottom");
+    const defaultBottom = Number.parseFloat(getComputedStyle(actions).bottom) || 0;
 
     let frame = 0;
     let revealFrame = 0;
+    let hideTimer = 0;
     const updateVisibility = () => {
       const shouldShow = window.scrollY >= window.innerHeight * 0.75;
       const isVisible = !actions.hidden;
+
+      window.clearTimeout(hideTimer);
 
       if (shouldShow === isVisible) return;
 
@@ -56,7 +63,9 @@ const t = getTranslator();
       if (!shouldShow) {
         actions.classList.remove("translate-y-0", "opacity-100");
         actions.classList.add("translate-y-2", "opacity-0");
-        actions.hidden = true;
+        hideTimer = window.setTimeout(() => {
+          if (actions.classList.contains("opacity-0")) actions.hidden = true;
+        }, 200);
         return;
       }
 
@@ -69,9 +78,19 @@ const t = getTranslator();
       });
     };
 
+    const updatePosition = () => {
+      const cardBottom = readingContent.getBoundingClientRect().bottom;
+      const bottom = Math.max(defaultBottom, window.innerHeight - cardBottom);
+
+      actions.style.bottom = `${bottom}px`;
+    };
+
     const scheduleUpdate = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(updateVisibility);
+      frame = requestAnimationFrame(() => {
+        updateVisibility();
+        updatePosition();
+      });
     };
 
     const scrollToTop = () => {
@@ -79,6 +98,7 @@ const t = getTranslator();
     };
 
     updateVisibility();
+    updatePosition();
     backToTop.addEventListener("click", scrollToTop);
     document.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate, { passive: true });
@@ -86,6 +106,8 @@ const t = getTranslator();
     cleanupPostFloatingActions = () => {
       cancelAnimationFrame(frame);
       cancelAnimationFrame(revealFrame);
+      window.clearTimeout(hideTimer);
+      actions.style.removeProperty("bottom");
       backToTop.removeEventListener("click", scrollToTop);
       document.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
