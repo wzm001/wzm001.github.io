@@ -22,34 +22,44 @@ const menuId = `${targetId}-sort-menu`;
     data-post-sort-trigger
   >
     <span data-post-sort-current>{t(I18nKey.sortLatest)}</span>
-    <Icon class="size-4 rotate-90 text-muted" name="chevron" size={16} />
+    <Icon class="size-4 rotate-90 text-muted transition-transform duration-150 ease-out" name="chevron" size={16} />
   </button>
 
   <div
-    class="absolute top-full right-0 z-10 mt-2 w-max min-w-full rounded-lg border border-border bg-panel p-1"
+    class="pointer-events-none absolute top-full right-0 z-10 mt-2 w-max min-w-full -translate-y-1 rounded-lg border border-border bg-panel p-1 opacity-0 transition-[opacity,transform] duration-150 ease-out"
     id={menuId}
     hidden
     data-post-sort-menu
   >
     <button
-      class="block w-full cursor-pointer rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:bg-accent-soft aria-pressed:text-accent-strong"
+      class="flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:text-accent-strong"
       type="button"
       aria-pressed="true"
       data-post-sort-label={t(I18nKey.sortLatest)}
       data-post-sort-option="latest"
     >
-      {t(I18nKey.sortLatest)}
+      <span class="grid size-4 shrink-0 place-items-center text-accent-strong" aria-hidden="true" data-post-sort-check>
+        <Icon class="size-3.5" name="check" size={14} />
+      </span>
+      <span>{t(I18nKey.sortLatest)}</span>
     </button>
     {
       isCommentViewCountEnabled && (
         <button
-          class="block w-full cursor-pointer rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:bg-accent-soft aria-pressed:text-accent-strong"
+          class="flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-semibold whitespace-nowrap text-text-soft transition-colors hover:bg-accent-soft hover:text-accent-strong aria-pressed:text-accent-strong"
           type="button"
           aria-pressed="false"
           data-post-sort-label={t(I18nKey.sortMostRead)}
           data-post-sort-option="views"
         >
-          {t(I18nKey.sortMostRead)}
+          <span
+            class="grid size-4 shrink-0 place-items-center text-accent-strong opacity-0 transition-opacity duration-150"
+            aria-hidden="true"
+            data-post-sort-check
+          >
+            <Icon class="size-3.5" name="check" size={14} />
+          </span>
+          <span>{t(I18nKey.sortMostRead)}</span>
         </button>
       )
     }
@@ -62,6 +72,10 @@ const menuId = `${targetId}-sort-menu`;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const activeItemAnimations = new WeakMap<HTMLElement, Animation>();
+  const postSortMenuCloseTimers = new WeakMap<HTMLElement, number>();
+  const postSortMenuOpenFrames = new WeakMap<HTMLElement, number>();
+  const postSortMenuClosedClasses = ["-translate-y-1", "opacity-0", "pointer-events-none"];
+  const postSortMenuOpenClasses = ["translate-y-0", "opacity-100", "pointer-events-auto"];
 
   const getNumericData = (item: HTMLElement, key: "publishedAt" | "viewCount") => {
     return Number(item.dataset[key] ?? 0);
@@ -149,11 +163,68 @@ const menuId = `${targetId}-sort-menu`;
   const closePostSort = (sort: HTMLElement) => {
     const trigger = sort.querySelector<HTMLButtonElement>("[data-post-sort-trigger]");
     const menu = sort.querySelector<HTMLElement>("[data-post-sort-menu]");
+    const icon = trigger?.querySelector<SVGElement>("svg");
 
     if (!trigger || !menu) return;
 
+    const closeTimer = postSortMenuCloseTimers.get(menu);
+    if (closeTimer !== undefined) {
+      window.clearTimeout(closeTimer);
+      postSortMenuCloseTimers.delete(menu);
+    }
+
+    const openFrame = postSortMenuOpenFrames.get(menu);
+    if (openFrame !== undefined) {
+      window.cancelAnimationFrame(openFrame);
+      postSortMenuOpenFrames.delete(menu);
+    }
+
     trigger.setAttribute("aria-expanded", "false");
-    menu.hidden = true;
+    menu.classList.remove(...postSortMenuOpenClasses);
+    menu.classList.add(...postSortMenuClosedClasses);
+    icon?.classList.remove("-rotate-90");
+    icon?.classList.add("rotate-90");
+
+    if (menu.hidden) return;
+
+    const timer = window.setTimeout(() => {
+      if (trigger.getAttribute("aria-expanded") === "false") menu.hidden = true;
+      postSortMenuCloseTimers.delete(menu);
+    }, 150);
+    postSortMenuCloseTimers.set(menu, timer);
+  };
+
+  const openPostSort = (sort: HTMLElement) => {
+    const trigger = sort.querySelector<HTMLButtonElement>("[data-post-sort-trigger]");
+    const menu = sort.querySelector<HTMLElement>("[data-post-sort-menu]");
+    const icon = trigger?.querySelector<SVGElement>("svg");
+
+    if (!trigger || !menu) return;
+
+    const closeTimer = postSortMenuCloseTimers.get(menu);
+    if (closeTimer !== undefined) {
+      window.clearTimeout(closeTimer);
+      postSortMenuCloseTimers.delete(menu);
+    }
+
+    const openFrame = postSortMenuOpenFrames.get(menu);
+    if (openFrame !== undefined) window.cancelAnimationFrame(openFrame);
+
+    trigger.setAttribute("aria-expanded", "true");
+    menu.hidden = false;
+    menu.classList.remove(...postSortMenuOpenClasses);
+    menu.classList.add(...postSortMenuClosedClasses);
+    icon?.classList.remove("rotate-90");
+    icon?.classList.add("-rotate-90");
+
+    const frame = window.requestAnimationFrame(() => {
+      if (menu.hidden || trigger.getAttribute("aria-expanded") !== "true") return;
+
+      menu.classList.remove(...postSortMenuClosedClasses);
+      menu.classList.add(...postSortMenuOpenClasses);
+      postSortMenuOpenFrames.delete(menu);
+    });
+    postSortMenuOpenFrames.set(menu, frame);
   };
 
   const setupPostSort = () => {
@@ -169,10 +240,9 @@ const menuId = `${targetId}-sort-menu`;
 
       sort.dataset.postSortReady = "true";
       trigger.addEventListener("click", () => {
-        const shouldOpen = menu.hidden;
+        const shouldOpen = trigger.getAttribute("aria-expanded") !== "true";
         document.querySelectorAll<HTMLElement>("[data-post-sort]").forEach(closePostSort);
-        trigger.setAttribute("aria-expanded", String(shouldOpen));
-        menu.hidden = !shouldOpen;
+        if (shouldOpen) openPostSort(sort);
       });
 
       options.forEach((option) => {
@@ -183,6 +253,9 @@ const menuId = `${targetId}-sort-menu`;
 
           options.forEach((candidate) => {
             candidate.setAttribute("aria-pressed", String(candidate === option));
+            candidate
+              .querySelector<HTMLElement>("[data-post-sort-check]")
+              ?.classList.toggle("opacity-0", candidate !== option);
           });
 
           sortPostList(sort);
