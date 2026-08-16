@@ -286,3 +286,31 @@
     }
   }
 }
+
+/* Keep one collapse control when a code frame includes a title. */
+.prose-content .expressive-code .ec-collapse__header-toggle {
+  display: none;
+}
+
+/* Match the collapse control to the site's semantic control colors. */
+.prose-content .expressive-code .ec-collapse__toggle {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-surface);
+  border-color: var(--color-border-control);
+  border-radius: var(--radius-full);
+  color: var(--color-accent-strong);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.prose-content .expressive-code .ec-collapse__toggle:hover {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent-strong);
+}
+
+.prose-content .expressive-code .ec-collapse__toggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
