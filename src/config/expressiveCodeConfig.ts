@@ -11,6 +11,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 
   // 关闭代码块框架阴影
   styleOverrides: {
+    codeFontFamily: "var(--code-font-family)",
     borderRadius: "calc(var(--radius-lg) - var(--ec-brdWd))",
     frames: {
       frameBoxShadowCssValue: "none",

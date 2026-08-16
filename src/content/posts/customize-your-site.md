@@ -40,6 +40,8 @@ export const siteConfig = {
 
 `siteUrl` 会影响 canonical URL、sitemap、RSS 和文章分享链接。部署前应替换为真实地址，并确认地址不包含多余的路径或结尾斜杠。
 
+字体在 `src/config/fontConfig.ts` 中配置：`font` 用于正文与界面，`codeFont` 用于行内代码和代码块。使用本地或远程自定义字体时，在对应字体项中填写 `src`。
+
 ## 添加自己的文章
 
 在 `src/content/posts/` 中创建 Markdown 文件，并按照 `_template.md` 填写 frontmatter。文件名会成为文章 URL 的一部分，因此建议使用简短、稳定且不带空格的名称。

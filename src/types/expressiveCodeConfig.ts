@@ -9,6 +9,7 @@ export interface ExpressiveCodeConfig {
   lightTheme: BundledTheme;
   styleOverrides: {
     borderRadius?: string;
+    codeFontFamily?: string;
     frames: {
       frameBoxShadowCssValue: string;
       editorTabBorderRadius?: string;

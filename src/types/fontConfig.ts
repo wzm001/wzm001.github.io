@@ -5,4 +5,5 @@ export interface FontDefinition {
 
 export interface FontConfig {
   readonly font: readonly FontDefinition[];
+  readonly codeFont: readonly FontDefinition[];
 }

@@ -60,9 +60,11 @@ if (shouldRenderOpenGraph) {
 
 const openGraphLocale = siteConfig.lang.replace("-", "_");
 const fontFamily = getFontFamily(fontConfig.font);
-const fontFaceCss = getFontFaceCss(fontConfig.font);
-const fontPreconnects = getFontPreconnects(fontConfig.font);
-const fontFamilyStyle = `--font-family: ${fontFamily}`;
+const codeFontFamily = getFontFamily(fontConfig.codeFont);
+const configuredFonts = [...fontConfig.font, ...fontConfig.codeFont];
+const fontFaceCss = getFontFaceCss(configuredFonts);
+const fontPreconnects = getFontPreconnects(configuredFonts);
+const fontFamilyStyle = `--font-family: ${fontFamily}; --code-font-family: ${codeFontFamily}`;
 const faviconLinks = siteConfig.favicon.filter(({ src }) => src.trim());
 ---
 
