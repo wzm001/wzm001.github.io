@@ -68,13 +68,18 @@
     margin: 1.5rem 0;
     padding: 1rem 1.25rem;
     color: var(--color-prose-quote);
-    background: var(--color-accent-soft);
+    background: transparent;
     border-left: 0.25rem solid var(--color-prose-quote-border);
-    border-radius: var(--radius-lg);
+    border-radius: 0;
   }
 
   .prose-content blockquote > :last-child {
     margin-bottom: 0;
+  }
+
+  .prose-content blockquote.prose-callout {
+    border-left: 0;
+    border-radius: var(--radius-lg);
   }
 
   .prose-content blockquote.prose-callout > .prose-callout-title {
@@ -115,27 +120,22 @@
 
   .prose-content blockquote.prose-callout[data-callout="note"] {
     background: var(--color-accent-soft);
-    border-left-color: var(--color-prose-quote-border);
   }
 
   .prose-content blockquote.prose-callout[data-callout="tip"] {
     background: var(--color-success-soft);
-    border-left-color: var(--color-success);
   }
 
   .prose-content blockquote.prose-callout[data-callout="important"] {
     background: var(--color-special-soft);
-    border-left-color: var(--color-special);
   }
 
   .prose-content blockquote.prose-callout[data-callout="warning"] {
     background: var(--color-warning-soft);
-    border-left-color: var(--color-warning);
   }
 
   .prose-content blockquote.prose-callout[data-callout="caution"] {
     background: var(--color-draft-soft);
-    border-left-color: var(--color-draft);
   }
 
   .prose-content > .expressive-code {
