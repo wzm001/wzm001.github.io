@@ -44,15 +44,16 @@ const t = getTranslator();
 
     if (!actions || !backToTop || !readingContent) return;
 
-    actions.style.removeProperty("bottom");
     const defaultBottom = Number.parseFloat(getComputedStyle(actions).bottom) || 0;
 
     let frame = 0;
     let revealFrame = 0;
     let hideTimer = 0;
     const updateVisibility = () => {
-      const shouldShow = window.scrollY >= window.innerHeight * 0.75;
-      const isVisible = !actions.hidden;
+      const cardBottom = readingContent.getBoundingClientRect().bottom;
+      const actionBottom = window.innerHeight - defaultBottom;
+      const shouldShow = window.scrollY >= window.innerHeight * 0.75 && cardBottom > actionBottom;
+      const isVisible = !actions.hidden && actions.classList.contains("opacity-100");
 
       window.clearTimeout(hideTimer);
 
@@ -61,10 +62,14 @@ const t = getTranslator();
       cancelAnimationFrame(revealFrame);
 
       if (!shouldShow) {
-        actions.classList.remove("translate-y-0", "opacity-100");
-        actions.classList.add("translate-y-2", "opacity-0");
+        actions.classList.remove("opacity-100");
+        actions.classList.add("opacity-0");
         hideTimer = window.setTimeout(() => {
-          if (actions.classList.contains("opacity-0")) actions.hidden = true;
+          if (actions.classList.contains("opacity-0")) {
+            actions.hidden = true;
+            actions.classList.remove("translate-y-0");
+            actions.classList.add("translate-y-2");
+          }
         }, 200);
         return;
       }
@@ -78,19 +83,9 @@ const t = getTranslator();
       });
     };
 
-    const updatePosition = () => {
-      const cardBottom = readingContent.getBoundingClientRect().bottom;
-      const bottom = Math.max(defaultBottom, window.innerHeight - cardBottom);
-
-      actions.style.bottom = `${bottom}px`;
-    };
-
     const scheduleUpdate = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        updateVisibility();
-        updatePosition();
-      });
+      frame = requestAnimationFrame(updateVisibility);
     };
 
     const scrollToTop = () => {
@@ -98,7 +93,6 @@ const t = getTranslator();
     };
 
     updateVisibility();
-    updatePosition();
     backToTop.addEventListener("click", scrollToTop);
     document.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate, { passive: true });
@@ -107,7 +101,6 @@ const t = getTranslator();
       cancelAnimationFrame(frame);
       cancelAnimationFrame(revealFrame);
       window.clearTimeout(hideTimer);
-      actions.style.removeProperty("bottom");
       backToTop.removeEventListener("click", scrollToTop);
       document.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
