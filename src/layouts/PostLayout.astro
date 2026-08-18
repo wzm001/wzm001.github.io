@@ -1,6 +1,7 @@
 ---
 import Icon from "@/components/ui/Icon.astro";
 import CommentSection from "@/components/content/CommentSection.astro";
+import PostEndMatter from "@/components/content/PostEndMatter.astro";
 import PostOutdatedWarning from "@/components/content/PostOutdatedWarning.astro";
 import Spoiler from "@/components/content/Spoiler.astro";
 import Card from "@/components/ui/Card.astro";
@@ -18,9 +19,11 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   post: CollectionEntry<"posts">;
   headings: MarkdownHeading[];
+  previousPost?: CollectionEntry<"posts">;
+  nextPost?: CollectionEntry<"posts">;
 }
 
-const { post, headings } = Astro.props;
+const { post, headings, previousPost, nextPost } = Astro.props;
 const t = getTranslator();
 const { title, description, publishedAt, updatedAt, category, tags, draft } = post.data;
 const publishedLabel = formatPostDate(publishedAt);
@@ -117,6 +120,8 @@ const pageKey = getPostHref(post);
           <slot />
         </div>
       </Card>
+
+      <PostEndMatter previousPost={previousPost} nextPost={nextPost} />
 
       <CommentSection pageKey={pageKey} pageTitle={title} />
     </div>

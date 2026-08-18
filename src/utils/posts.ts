@@ -18,6 +18,15 @@ export function getPostHref(post: PostEntry) {
   return `/posts/${encodedId}`;
 }
 
+export function getAdjacentPosts(posts: readonly PostEntry[], post: PostEntry) {
+  const currentIndex = posts.findIndex((candidate) => candidate.id === post.id);
+
+  return {
+    previousPost: currentIndex > 0 ? posts[currentIndex - 1] : undefined,
+    nextPost: currentIndex >= 0 && currentIndex < posts.length - 1 ? posts[currentIndex + 1] : undefined,
+  };
+}
+
 export function getPostOgImageHref(post: PostEntry) {
   const encodedId = post.id.split("/").map(encodeURIComponent).join("/");
   return `/og/${encodedId}.png`;
