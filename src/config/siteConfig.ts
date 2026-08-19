@@ -6,7 +6,7 @@ export const siteConfig = {
   lang: "zh-CN",
 
   // 站点名称
-  title: "Jimmy's blogs",
+  title: "Jimmy's blog",
 
   // 站点副标题
   subTitle: "行者常至，为者常成",
