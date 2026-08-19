@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "Jimmy's blogs",
 
   // 站点副标题
-  subTitle: "Those who persevere will reach their destination; those who persist will achieve success.",
+  subTitle: "行者常至，为者常成",
 
   // 站点描述
   description: [
@@ -26,7 +26,7 @@ export const siteConfig = {
   generateOpenGraph: false,
 
   // 站点维护者
-  owner: "CnBarrier",
+  owner: "Jimmy Wu",
 
   // 头像链接
   gravatarUrl:
