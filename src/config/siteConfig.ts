@@ -9,10 +9,15 @@ export const siteConfig = {
   title: "Jimmy's blogs",
 
   // 站点副标题
-  subTitle: "A calm place for stories and ideas",
+  subTitle: "Those who persevere will reach their destination; those who persist will achieve success.",
 
   // 站点描述
-  description: ["记录关于生活、技术的思考", "在这里记录想法、故事与日常生活。"],
+  description: [
+    "学习的唯一途径就是实践。",
+    "实践的唯一途径就是尝试。",
+    "尝试的唯一途径就是失败。",
+    "失败的唯一途径就是学习。",
+  ],
 
   // 站点 URL（决定 sitemap 和链接的生成；部署前请替换为你的站点地址）
   siteUrl: "https://wzm001.github.io",
@@ -25,7 +30,7 @@ export const siteConfig = {
 
   // 头像链接
   gravatarUrl:
-    "https://gravatar.com/avatar/b2aecd98f763fccfa425a4fb9329ff4294e4bf4257a166986ed75a02ced26010?v=1778975002000&size=256",
+    "https://gravatar.com/avatar/5878628d301e8f8b7466523a82b59581f81c88c1d45e0e9c0534f9273e7684cb?v=1778975002000&size=256",
 
   // Favicon 配置，文件位置处于 ./public/ 中
   // rel 支持：icon、shortcut icon、apple-touch-icon、manifest

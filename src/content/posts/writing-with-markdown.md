@@ -5,7 +5,7 @@ publishedAt: 2999-12-30
 updatedAt: 2999-12-30
 category: "示例"
 tags: ["Markdown", "写作", "排版"]
-draft: false
+draft: true
 ---
 
 > 这是一篇随主题提供的示例文章，内容仅用于展示排版效果。

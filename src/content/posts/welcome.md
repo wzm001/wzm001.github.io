@@ -5,7 +5,7 @@ publishedAt: 9999-12-31
 updatedAt: 9999-12-31
 category: "示例"
 tags: ["Misthaven", "主题预览", "开始"]
-draft: false
+draft: true
 ---
 
 > 这是一篇随主题提供的示例文章。创建自己的内容后，可以安全地删除它。
