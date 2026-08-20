@@ -1,15 +1,16 @@
 ---
 title: "Spring 容器的实现原理"
 description: "Spring 容器的实现原理"
-publishedAt: "2023-05-19 10:00:00 +8:00"
+publishedAt: 2023-05-19
+updatedAt: 2026-08-01
 category: "框架"
-tags: ["Java", "Spring"]
+tags: ["Spring"]
 draft: false
 ---
 
 Spring 是后端研发最常用的框架，而 IOC 容器则是 Spring 框架中使用最多的功能，也是 Spring 所有功能的基础。今天简单梳理一下 Spring 容器的一些实现原理，网上有很多资料对 Spring 容器的说明陷入了细节的纠缠中，没能从全局的角度理解容器。我尝试按照自己的理解说明一下。
 
-# 什么是容器？
+## 什么是容器？
 
 首先我们需要明确，Spring 的容器究竟是什么概念。从应用层面看，我们可以把 Spring 提供的 `ApplicationContext` 接口的具体实现当作容器的实例。因为我们在代码中经常这样使用：
 
@@ -38,10 +39,7 @@ public Object getBean(String name) throws BeansException {
 
 我们首先了解一下这两个接口整体上的继承关系：
 
-![](/images/ApplicationContext.png)
-<div class="caption">
-    BeanFactory 和 ApplicationContext 的继承关系
-</div>
+![eanFactory 和 ApplicationContext 的继承关系](/images/ApplicationContext.png)
 
 具体的细节这里不展开，只简单介绍一下接口的大概作用：
 
@@ -112,6 +110,6 @@ private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256
 
 可以看到，Spring 底层确实是通过 Map 来支持对象的检索的，key 就是 bean 的名称，value 就是对应的 bean 对象。
 
-# Spring 容器如何初始化
+## Spring 容器如何初始化
 
 这里分析一下 `ApplicationContext` 的初始化。容器初始化的核心方法是 `AbstractApplicationContext.refresh()` 。

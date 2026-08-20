@@ -3,8 +3,8 @@ title: "MySQL 事务支持"
 description: "MySQL 的事务支持细节"
 publishedAt: 2023-03-11
 updatedAt: 2026-08-01
-category: "Database MySQL"
-tags: ["MySQL", "事务", "InnoDB"]
+category: "MySQL"
+tags: ["事务", "InnoDB"]
 draft: false
 ---
 

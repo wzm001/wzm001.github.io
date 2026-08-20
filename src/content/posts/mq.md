@@ -3,7 +3,7 @@ title: "消息队列的基本概念"
 description: "消息队列概念梳理"
 publishedAt: 2023-04-01
 updatedAt: 2026-08-01
-category: "MQ 微服务"
+category: "存储"
 tags: ["MQ"]
 draft: false
 ---
@@ -240,7 +240,6 @@ Kafka 的定义是 _发送多个跨 partition 的消息，保证这些消息同�
 我们这里讨论 RocketMQ 语义的事务消息。先看一下通过传统消息如何支持事务消息的语义：
 
 ```mermaid
->>>>>>> mermaid
 sequenceDiagram
 participant P as Producer
 participant MQ as Message Queue

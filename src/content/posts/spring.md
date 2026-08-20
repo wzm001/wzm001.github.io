@@ -1,7 +1,8 @@
 ---
 title: "Spring 框架的整体认识"
 description: "Spring、Spring Boot、Spring Cloud 有什么区别"
-publishedAt: "2023-04-12 08:45:16 +8:00"
+publishedAt: 2023-04-12
+updatedAt: 2026-08-01
 category: "框架"
 tags: ["Spring"]
 draft: false
@@ -15,19 +16,13 @@ Spring 全家桶是目前 Java 开发必不可少的工具，随着开发技术�
 
 官网还列出了 Spring 全家桶的主要功能：
 ![](/images/spring.png)
-<div class="caption">
-    What Spring can do?
-</div>
 
 可以看到，Spring 已经发展成为一个生态，覆盖了后端开发的方方面面。下面我们从 Spring 生态中最常用的三个框架入手，介绍 Spring 解决了哪些问题。
 
-# Spring Framework
+## Spring Framework
 
 Spring Framework 是 Spring 生态的基础。Spring 框架分为不同的模块（modules），应用可以任意选择需要的模块整合进自己的代码。下图是 Spring Framework 的模块概览：
 ![](/images/spring-overview.png)
-<div class="caption">
-    Spring Framework 概览。Spring 框架一直在发展，建议从官方文档查看最新资料
-</div>
 
 从图中我们可以看出，Spring 框架的核心 `core` 模块是所有功能都需要依赖的，`spring-core` 模块主要提供了最基础的 `IoC` 容器，在此基础上 Spring 扩展大多数应用都会使用的公共模块，包括 `AOP` ，负责支持切面编程；Message，负责支持事件驱动等。Data Access 模块负责封装数据访问相关的功能，包括整合 ORM 框架，事务处理等；Web 模块负责处理 Web 开发相关的功能，提供了 `Spring MVC` 框架支持传统的同步 web 服务，和 `Spring WebFlux` 框架支持异步响应式编程。
 
@@ -47,7 +42,7 @@ Spring Framework 是 J2EE 的轻量级替代品，它提供了很多方便的功
 6. 低侵入，对业务代码污染极低；
 7. 高度开放性，不强制依赖 Spring，开发者可以自由选择 Spring 的部分功能模块；
 
-# Spring Boot
+## Spring Boot
 
 有了 Spring Framework，为什么还要推出 Spring Boot？这两者有什么区别？要回答这个问题，我们首先看一下 Spring Framework 解决了什么问题，没有解决什么问题。
 
@@ -79,16 +74,13 @@ Spring Boot 的核心功能有两个：
 
 Spring Boot 整合了相当多的组件，几乎涵盖了 web 开发和微服务开发的所有场景。具体可以看一下官网的[介绍](https://docs.spring.io/spring-boot/docs/current/reference/html/)。
 
-# Spring Cloud
+## Spring Cloud
 
 [Spring Cloud](https://spring.io/cloud) 关注的是分布式系统中各个服务之间的协调。
 
 相比于单体服务关注的是服务内部各个模块之间的协调，分布式系统的核心的关注点是各个微服务之间如何有效协调沟通，统一提供一套高可用的整体服务。
 
-![](/images/spring-cloud.png)
-<div class="caption">
-    Spring Cloud 架构
-</div>
+![Spring Cloud 架构](/images/spring-cloud.png)
 
 Spring Cloud 整合了一大批业内知名的微服务开发组件，其中主要包括：
 
@@ -104,7 +96,7 @@ Spring Cloud 整合了一大批业内知名的微服务开发组件，其中主�
 
 Spring Cloud 把分布式系统各个环节抽象成一个节点进行封装，允许开发人员灵活切换实现。
 
-# 总结
+## 总结
 
 这三个组件介绍完，我想可以提炼出 Spring 贯穿始终的设计思想了：Spring 致力于提供一套解决方案，适用于后端软件开发的各个层面。
 Spring Framework 负责协调服务内部各个对象间的关系；Spring Boot 更近一步，站在对象组成的框架层面，负责协调各个框架灵活协作；Spring Cloud 再进一步，站在各个服务组成的分布式系统层面，负责协调各个服务之间的协作和管理。

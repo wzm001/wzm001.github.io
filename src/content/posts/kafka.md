@@ -1,7 +1,7 @@
 ---
 title: "Kafka 介绍"
 description: "介绍 Kafka 的架构特点和使用场景"
-publishedAt: "2023-04-10 08:45:16 +8:00"
+publishedAt: 2023-04-10
 category: "MQ 微服务"
 tags: ["MQ", "Kafka"]
 draft: false

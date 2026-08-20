@@ -1,15 +1,16 @@
 ---
 title: "Java NIO 概念梳理"
 description: "Java NIO 概念和使用"
-publishedAt: "2023-04-15 21:45:16 +8:00"
-category: "Java IO"
+publishedAt: 2023-04-15
+updatedAt: 2026-08-01
+category: "Java"
 tags: ["Java", "NIO"]
 draft: false
 ---
 
 看了很多零零散散的 NIO 文章，但没有形成系统的认识。今天尝试整理一下 NIO 的相关概念。
 
-# 什么是 NIO
+## 什么是 NIO
 
 Java 提供的传统 IO 模型称为 BIO (阻塞 IO，Blocking IO)，而 NIO 称为“非阻塞 IO” （Non-blocking IO）。传统 IO 是面向输入/输出流（InputStream / OutputStream）的，NIO 是面向通道（Channel）的。
 
@@ -28,7 +29,10 @@ System.out.println(new String(buf));
 
 我们看到，在传统 BIO 模型下，`InputStream` 的 `read()` 方法会阻塞线程，此时 JVM 会调用操作系统读取文件，程序从用户态转为内核态，当操作系统将文件读取完成并且把数据从内核缓冲区拷贝到 JVM 的内存中后，该线程才会被唤起继续执行。大概的流程如下图：
 
-{% mermaid %}
+```mermaid
+---
+title: JVM 读取文件的流程，整个读取过程中 JVM 的线程全程阻塞等待结果
+---
 sequenceDiagram
 participant JVM
 participant C as OS_Core
@@ -42,11 +46,7 @@ Note right of C: OS 拷贝数据到内核缓冲区
 C->>JVM: OS 拷贝数据到用户缓冲区
 deactivate C
 deactivate JVM
-{% endmermaid %}
-
-<div class="caption">
-    JVM 读取文件的流程，整个读取过程中 JVM 的线程全程阻塞等待结果
-</div>
+```
 
 NIO 和 BIO 的核心区别就是，调用 IO 操作的线程不再阻塞。我们使用伪代码的方式说明：
 
@@ -75,7 +75,10 @@ for (NonBlockingFileInputStream fis : fisList) {
 
 上面的代码简单说明了如何使用非阻塞读取的方式通过一个线程管理多个读取任务。
 
-{% mermaid %}
+```mermaid
+---
+title: 非阻塞读取文件，当前线程一直在运行中
+---
 sequenceDiagram
 participant JVM
 participant C as OS_Core
@@ -88,27 +91,21 @@ else 操作系统完成文件读取
 JVM->>+C: get read result
 C->>-JVM: byte array
 end
-{% endmermaid%}
-<div class="caption">
-    非阻塞读取文件，当前线程一直在运行中
-</div>
+```
 
 这里有个问题，既然 BIO 已经可以实现 IO 操作，为什么还要推出一套 NIO 体系呢？要理解这个问题，我们需要通过网络 IO 来进行说明，因为 NIO 主要是为了优化网络 IO 模型的。
 
 我们通常使用网络 IO 来实现 B/S 和 C/S 架构，就是浏览器和客户端访问网络服务器做数据交互。这些架构有个共同特点：客户端的数量远大于服务器的数量，一台服务器需要支持多个客户端的网络传输。使用传统的 BIO 模型，服务器在从网络 `socket` 中读取或写入数据时，当前线程是阻塞的，这时如果有其他客户端也在请求服务器，当前线程无法响应。这肯定是不可接受的。所以使用传统 BIO 模型，服务器端一定是通过多线程的方式支持并发请求。客户端一旦连接服务器，服务器就创建一个线程去单独处理该客户端的请求。但一台服务器能同时运行的线程数量是有限的，因为服务器内存是有限的。并且线程在处理网络 IO 的过程中也会阻塞，也就是说服务器的内存被大量占用，却没有得到高效的利用。这是 BIO 模型的弊端。
 
-![](/images/bio.png)
-<div class="caption">
-    BIO 的服务器线程模型
-</div>
+![BIO 的服务器线程模型](/images/bio.png)
 
 而 NIO 尝试解决 BIO 的弊端。NIO 在处理 IO 请求时，当前线程不会阻塞，这就可以实现通过一个线程管理多个客户端的 IO 请求，在一定程度上提高了服务器资源的利用率。但我们在上面的 NIO 例子中也会发现一个问题，就是无论当前有没有 IO 请求，线程会一直空转下去，这是对 CPU 资源的浪费。我们可以看一下JVM 是如何通过自己的 NIO 模型解决这个问题的。
 
-# NIO 的核心组件
+## NIO 的核心组件
 
 NIO 有三大核心组件。分别是 `Selector`、`Channel` 和 `ByteBuffer`。我们分别介绍这些组件的作用。
 
-## ByteBuffer 缓冲区
+### ByteBuffer 缓冲区
 
 ByteBuffer 顾名思义，就是在 IO 过程中的数据缓冲区，有些类似于我们在上面例子中的字节数组，但 ByteBuffer 封装了很多实用的方法，比字节数组功能更强大。我们先看一下 `ByteBuffer` 的类结构：
 ![](/images/byte-buffer.png)
@@ -119,7 +116,7 @@ ByteBuffer 是 Buffer 体系下最常用的类。Buffer 还包括其他基本类
 
 注意，ByteBuffer 不是线程安全的，多线程编程下需要注意状态的同步控制。
 
-### Buffer 的底层原理
+#### Buffer 的底层原理
 
 Buffer 是所有缓冲区实现类的父类，它定义了一个线性的有限序列，用来存放原始数据类型。Buffer 有三个重要属性，分别是：
 
@@ -135,25 +132,19 @@ ByteBuffer buffer = ByteBuffer.allocate(8);
 
 我们用图表示一下缓冲区各个状态之间的变化：
 
-#### 初始化
+##### 初始化
 
-![](/images/buffer-init.png)
-<div class="caption">
-    初始化缓冲区
-</div>
+![初始化缓冲区](/images/buffer-init.png)
 
 初始化完成后字节数组中所有元素的起始值都是 0。`position` = 0，`limit` = `capacity`。
 
-#### 写入数据
+##### 写入数据
 
-![](/images/buffer-write.png)
-<div class="caption">
-    向缓冲区写入数据
-</div>
+![向缓冲区写入数据](/images/buffer-write.png)
 
 缓冲区写入部分数据后，`position` 向后移动，指向下一个要写入的位置。如果写入的数据超过缓冲区的容量，导致 `position == limit`，此时再写入就会抛出 `BufferOverflowException` 。
 
-#### 切换到读模式
+##### 切换到读模式
 
 当缓冲区写入部分数据后，调用缓冲区的 `flip()` 方法，将缓冲区转换为读模式。`flip()` 方法做的事情很简单，我们直接看源码：
 
@@ -167,22 +158,16 @@ public final Buffer flip() {
 ```
 
 调用 `flip()` 方法后缓冲区变为：
-![](/images/buffer-read.png)
-<div class="caption">
-    缓冲区转变为读模式
-</div>
+![缓冲区转变为读模式](/images/buffer-read.png)
 
-#### 切换到写模式
+##### 切换到写模式
 
 当缓冲区的数据读取完之后，调用 `clear()` 方法，将缓冲区重置为初始化的状态。
 
 当读取了缓冲区部分数据后，如果此时想立即切换到读模式，可以调用 `compact()` 方法压缩缓冲区，把已经读取的部分移除，把未读取的部分往前移：
-![](/images/buffer-compact.png)
-<div class="caption">
-    压缩缓冲区并进入写模式
-</div>
+![压缩缓冲区并进入写模式](/images/buffer-compact.png)
 
-## Channel 通道
+### Channel 通道
 
 `Channel` 相当于 NIO 模型中的流，表示 JVM 应用和一个支持 I/O 操作的设备或组件的连接，如硬盘、Socket、文件等。`Channel` 支持双向传输，既可以读，也可以写。程序不能直接访问 `Channel` 中的数据，需要通过 `Buffer` 作为中介。`Channel` 还提供了 `map()` 方法，支持将“一块”数据直接映射到系统内存中。常见的 `Channel` 实现包括：
 
@@ -201,7 +186,7 @@ public final Buffer flip() {
 SocketChannel.configureBlocking(false); // 指定当前通道为非阻塞模式
 ```
 
-## Selector 选择器
+### Selector 选择器
 
 `SelectableChannel` 对象的多路复用器。选择器可以同时管理多个通道对象，当发生通道关注的事件时，通知对应的通道对象进行处理。
 
@@ -241,7 +226,7 @@ int select(); // 该方法调用后会阻塞，直到有关注的事件发生才
 int select(long timeout); // 该方法可以指定阻塞时间
 ```
 
-# NIO 的底层原理
+## NIO 的底层原理
 
 我们首先了解一下操作系统常见的 5 种 I/O 模型。
 
@@ -269,11 +254,11 @@ int select(long timeout); // 该方法可以指定阻塞时间
 
 多路复用技术最适用于“高并发”场景，所谓高并发是指 1 ms 内至少同时有上千个连接请求准备好。其他情况下多路复用技术不能发挥优势。另一方面，使用 Java NIO 进行功能实现，相对于传统 `Socket` 实现要复杂一些。在实际应用中，要根据自己的业务需求进行技术选择。
 
-## Java NIO 和 OS 的交互
+### Java NIO 和 OS 的交互
 
 ![](/images/java-nio.png)
 
-# 参考
+## 参考
 
 - [Java IO 体系、线程模型大总结](https://learn.lianglianglee.com/%E6%96%87%E7%AB%A0/Java%20IO%20%E4%BD%93%E7%B3%BB%E3%80%81%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%A7%E6%80%BB%E7%BB%93.md)
 - [Java NIO 浅析](https://learn.lianglianglee.com/%E6%96%87%E7%AB%A0/Java%20NIO%E6%B5%85%E6%9E%90.md)

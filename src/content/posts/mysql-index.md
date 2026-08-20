@@ -3,8 +3,8 @@ title: "MySQL 的索引结构"
 description: "MySQL 的索引实现细节"
 publishedAt: 2023-03-15
 updatedAt: 2026-08-01
-category: "Database MySQL"
-tags: ["MySQL", "索引", "InnoDB"]
+category: "MySQL"
+tags: ["索引", "InnoDB"]
 draft: false
 ---
 

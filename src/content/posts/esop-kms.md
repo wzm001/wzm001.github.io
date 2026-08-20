@@ -2,8 +2,9 @@
 title: "esop-kms"
 description: "通用的密钥管理服务"
 publishedAt: 2023-04-11
-category: 工作
-tags: ["ESOP", "密钥管理"]
+updatedAt: 2026-08-01
+category: "ESOP"
+tags: ["密钥管理"]
 draft: false
 ---
 

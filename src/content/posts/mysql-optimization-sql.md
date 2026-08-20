@@ -3,8 +3,8 @@ title: "MySQL 性能优化之 EXPLAIN 关键字"
 description: "MySQL 的优化操作"
 publishedAt: 2023-03-17
 updatedAt: 2026-08-01
-category: "Database MySQL"
-tags: ["MySQL", "性能优化", "EXPLAIN"]
+category: "MySQL"
+tags: ["性能优化", "EXPLAIN"]
 draft: false
 ---
 

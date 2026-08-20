@@ -1,13 +1,14 @@
 ---
 title: "RPC 框架初探"
 description: "Dubbo, gRPC, Thrift 对比"
-publishedAt: "2023-04-13 08:45:16 +8:00"
-category: "框架 微服务"
+publishedAt: 2023-04-13
+updatedAt: 2026-08-01
+category: "框架"
 tags: ["RPC"]
 draft: false
 ---
 
-# 什么是 RPC
+## 什么是 RPC
 
 RPC(Remote Procedure Call)，远程服务调用，是分布式系统绕不开的话题。RPC 是一个大的概念，这里我们缩小一下讨论的范围，只关注多个服务（进程）之间通过网络进行通信的问题。
 
@@ -25,7 +26,7 @@ RPC(Remote Procedure Call)，远程服务调用，是分布式系统绕不开的
 
 随着分布式架构在最近几年的兴起，RPC 框架除了在满足这三个基本问题的基础上，逐渐朝着更高层次（不仅负责调用远程服务，还管理远程服务）和插件化的方向发展。下面我们就挑选几个比较流行的 RPC 框架，进行简单的对比。
 
-# Dubbo
+## Dubbo
 
 [Dubbo](https://dubbo.apache.org/zh-cn/) 是阿里实现的一个 RPC 框架，后来捐献给 Apache 软件基金会，称为 Apache 的顶级项目。Dubbo 在提供 RPC 功能的基础上，还添加了服务监控和治理的功能，如服务发现、动态配置、负载均衡、流量路由等，官方目前对 Dubbo 的定义是一款 _服务开发框架_，因其兼顾了数据层面的 RPC 调用和服务层面的监控管理。
 
@@ -37,7 +38,7 @@ Dubbo 提供的核心功能包括：
 
 Dubbo 目前的发展，已经脱离了 RPC 框架的范畴，向 Spring Cloud 靠拢了。
 
-# gRPC
+## gRPC
 
 [gRPC](https://grpc.io/) 是 Google 开源的一个 RPC 框架，使用 `HTTP/2` 协议传输，使用 `Protocol Buffers` 作为 IDL 和序列化协议。
 
@@ -70,16 +71,16 @@ rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse);
 rpc BidiHello(stream HelloRequest) returns (stream HelloResponse);
 ```
 
-# Thrift
+## Thrift
 
 [Thrift](https://thrift.apache.org/) 是 Facebook 开源的 RPC 框架。Thrift 架构设计和 gRPC 类似，也是先编写 IDL 文件，然后使用编译器生成对应语言的代码模块（stub）。最后业务调用即可。
 
 Thrift 和 gRPC 的性能表现网上有很多资料，这里就不赘述了。但我简单看了一下两个框架的官方文档，感觉 Thrift 的文档相对维护得差一些。
 
-# 总结
+## 总结
 
 本文只是针对 RPC 做了一些概念上的整理，不涉及具体产品的技术实现。感觉目前市面上常见的 RPC 框架，基本可以划分为两类：一类是“大而全”的，这类框架在 RPC 的业务场景下向外拓展了很多功能，以 Dubbo 为代表，成员有新浪的 Motan 等；另一类是“小而精”的，这类框架专注于 RPC 的核心功能，以 gRPC、Thrift 为代表。
 
-# 参考
+## 参考
 
 - [远程服务调用](https://icyfenix.cn/architect-perspective/general-architecture/api-style/rpc.html)

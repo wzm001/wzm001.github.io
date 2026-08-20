@@ -2,8 +2,9 @@
 title: "esop-push"
 description: "通用的业务消息推送系统"
 publishedAt: 2023-04-11
-category: 工作
-tags: ["ESOP", "消息推送"]
+updatedAt: 2026-08-01
+category: "ESOP"
+tags: ["消息推送"]
 draft: false
 ---
 

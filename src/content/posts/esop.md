@@ -2,8 +2,8 @@
 title: "esop"
 description: "ESOP 概述"
 publishedAt: 2023-04-11
-category: 工作
-tags: ["ESOP", "股权激励"]
+category: "ESOP"
+tags: ["股权激励"]
 draft: false
 ---
 
