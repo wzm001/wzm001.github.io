@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import astroExpressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
+import mermaid from "astro-mermaid";
 import { satteri } from "@astrojs/markdown-satteri";
 import { pluginLanguageLogo } from "ec-lang-logo";
 import { pluginCollapsible } from "expressive-code-collapsible";
@@ -133,6 +134,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
+    mermaid({ autoTheme: true, enableLog: false }),
     icon(),
     astroExpressiveCode({
       themes: [expressiveCodeConfig.darkTheme, expressiveCodeConfig.lightTheme],

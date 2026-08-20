@@ -239,7 +239,8 @@ Kafka 的定义是 _发送多个跨 partition 的消息，保证这些消息同�
 
 我们这里讨论 RocketMQ 语义的事务消息。先看一下通过传统消息如何支持事务消息的语义：
 
-```mermaid 
+```mermaid
+>>>>>>> mermaid
 sequenceDiagram
 participant P as Producer
 participant MQ as Message Queue
