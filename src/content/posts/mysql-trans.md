@@ -1,7 +1,8 @@
 ---
 title: "MySQL 事务支持"
 description: "MySQL 的事务支持细节"
-publishedAt: "2023-03-11 17:30:00+0800"
+publishedAt: 2023-03-11
+updatedAt: 2026-08-01
 category: "Database MySQL"
 tags: ["MySQL", "事务", "InnoDB"]
 draft: false
@@ -9,9 +10,9 @@ draft: false
 
 前面几篇整理了事务的一些通用概念，这一篇梳理一下 MySQL 是如何支持事务的。本篇主要梳理 InnoDB 的实现逻辑，不包含其他存储引擎。
 
-# InnoDB 的锁机制
+## InnoDB 的锁机制
 
-## 共享锁和排它锁
+### 共享锁和排它锁
 
 InnoDB 实现了行级别和表级别的共享锁 (S) 和排它锁 (X)。持有共享锁的事务可以读取对应的行，持有排它锁的事务可以修改或删除该行。
 
@@ -22,7 +23,7 @@ InnoDB 实现了行级别和表级别的共享锁 (S) 和排它锁 (X)。持有�
 |   S    | Compatible | Conflict |
 |   X    |  Conflict  | Conflict |
 
-## 意向锁
+### 意向锁
 
 上面介绍了 InnoDB 在行级别的共享锁和排它锁，InnoDB 还有表级别的共享锁和排它锁。InnoDB 同时支持多粒度锁定，允许表锁和行锁并存。例如 `LOCK TABLE ... WRITE` 之类的语句在指定的表上获取排它锁。
 
@@ -53,11 +54,11 @@ InnoDB 实现了行级别和表级别的共享锁 (S) 和排它锁 (X)。持有�
 
 意向锁只会阻塞表锁，不会阻塞其他意向锁或行锁，意向锁的主要目的是为了标记当前表中存在（或即将出现）行锁。
 
-## 记录锁 Record Locks
+### 记录锁 Record Locks
 
 记录锁是索引记录上的锁。对于 InnoDB 而言，指的就是聚簇索引上的锁，也就是行锁。
 
-## 间隙锁 Gap Locks
+### 间隙锁 Gap Locks
 
 间隙锁是索引记录之间的间隙上的锁。或者是第一条索引记录之前的间隙以及最后一条索引记录之后的间隙。例如：
 
@@ -81,23 +82,23 @@ select * from child where id = 100;
 
 如果事务隔离级别调整为 RC，MySQL 会禁用间隙锁。
 
-## 临键锁 Next-key Locks
+### 临键锁 Next-key Locks
 
 临键锁是 _索引记录上的记录锁_ 加上 _索引记录之前的间隙锁_。临键锁可以防止幻读。在 MySQL 默认的 RR 隔离级别中，InnoDB 使用临键锁进行搜索和索引扫描。（只限与没有索引和非唯一索引的列，唯一索引列使用记录锁）
 
-## 插入意向锁 Insert Intention Locks
+### 插入意向锁 Insert Intention Locks
 
 插入意向锁是一种在行插入之前由 `insert` 操作设置的间隙锁，这个锁表示插入的意图。
 
-## 自增锁 AUTO-INC Locks
+### 自增锁 AUTO-INC Locks
 
 自增锁是一种特殊的*表级别*的锁，由插入到具有 `AUTO_INCREMENT` 列的表中的事务获取。目的是为了防止并发插入自增列冲突的情况。
 
-# InnoDB 的事务隔离级别
+## InnoDB 的事务隔离级别
 
 InnoDB 支持标准的四种隔离级别。
 
-## 可重复读 RR
+### 可重复读 RR
 
 InnoDB 使用最多的隔离级别，也是默认的隔离级别。可重复读使用快照支持*一致性读取*。当事务开启时建立快照，整个事务过程中读取的数据都是一致的。
 
@@ -106,13 +107,13 @@ InnoDB 使用最多的隔离级别，也是默认的隔离级别。可重复读�
 - 如果搜索条件使用了唯一索引，InnoDB 只锁定找到的索引记录，而不锁定其之前的间隙；
 - 如果不是唯一索引搜索，InnoDB 锁定扫描的索引范围，使用间隙锁或临键锁来阻止其他事务插入到该范围覆盖的间隙中。
 
-## 读已提交 RC
+### 读已提交 RC
 
 读已提交级别的一致性读取，会在事务中使用多个快照，每次读取的数据都是最新提交的一致性快照。
 
 对于锁定读取或更新，InnoDB 只锁定索引记录，不锁定它们之间的间隙。
 
-# 一致性非阻塞读取
+## 一致性非阻塞读取
 
 InnoDB 使用 MVCC 机制支持一致性非阻塞读取，因此事务中正常查询是不需要加锁的。
 
@@ -258,7 +259,7 @@ mysql> select * from employee;
 
 对于 `INSERT INTO ... SELECT`，`UPDATE ... (SELECT)` 和 `CREATE TABLE ... SELECT` 语句的 SELECT 部分，如果没有指定 `FOR UPDATE` 或 `FOR SHARE`，默认情况下 InnoDB 会对这些语句使用更强的锁，SELECT 部分的行为类似于 RC 级别的查询，每次执行都会读取新快照。
 
-# 锁定读取
+## 锁定读取
 
 在上面的第二个例子中，我们看到如果当前事务查询并修改某些数据，其他事务有可能会破坏该操作。为了避免此类问题，InnoDB 提供了锁定读取操作：`SELECT ... FOR SHARE` 和 `SELECT ... FOR UPDATE`。
 
@@ -324,7 +325,7 @@ mysql> commit;
 Query OK, 0 rows affected (0.01 sec)
 ```
 
-# InnoDB 语句和锁的关系
+## InnoDB 语句和锁的关系
 
 锁定读取、更新、删除操作都会在扫描的每一条索引记录上添加临键锁，无论记录是否满足 `where` 条件。
 如果在搜索条件中使用了二级索引，并且要设置的记录锁是独占的，InnoDB 也会键锁对应的聚簇索引并加锁。
@@ -366,9 +367,8 @@ ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting trans
 - 在 `innodb_table_locks = 1（默认值）` 的情况下，`LOCK TABLES` 语句会在表上获取两中表锁，一个是 MySQL 层的表锁，另一个是 InnoDB 层的表锁。
 - 不能在事务执行期间锁定其他表，因为 `LOCK TABLES` 语句隐式执行了 `COMMIT` 和 `UNLOCK TABLES`。
 
-# 总结
+## 总结
 
 参考:
 
 - [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
--

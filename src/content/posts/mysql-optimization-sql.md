@@ -1,7 +1,8 @@
 ---
 title: "MySQL 性能优化之 EXPLAIN 关键字"
 description: "MySQL 的优化操作"
-publishedAt: "2023-03-17 10:15:00+0800"
+publishedAt: 2023-03-17
+updatedAt: 2026-08-01
 category: "Database MySQL"
 tags: ["MySQL", "性能优化", "EXPLAIN"]
 draft: false
@@ -9,13 +10,13 @@ draft: false
 
 本系列分为多个主题，主要参考学习了 MySQL 参考手册中关于[优化](https://dev.mysql.com/doc/refman/8.0/en/optimization.html) 的相关章节，重点整理工作中经常遇到的内容。
 
-# EXPLAIN 关键字
+## EXPLAIN 关键字
 
 `EXPLAIN` 关键字显示了 MySQL 的执行计划，可以用来分析 MySQL 优化器是如何选择合适的方式执行查询。`EXPLAIN` 可以和 `SELECT`、`DELETE`、`INSERT`、`UPDATE` 和 `REPLACE` 语句组合使用。
 
 `EXPLAIN` 为 `SELECT` 语句中使用的每一个表返回一行信息，并且按照 MySQL 处理语句时读取它们的顺序列出。也就是说 MySQL 将会从第一行展示的表中读取信息，然后再在第二行展示的表中找到匹配的行，然后是第三行……依次类推。当所有的表都处理完后，MySQL 将选择的列输出。然后在进行下一次操作，直到找到所有匹配的结果。
 
-## EXPLAIN 的输出列
+### EXPLAIN 的输出列
 
 下表列出了 `EXPLAIN` 每一行输出的列信息：
 
@@ -34,7 +35,7 @@ draft: false
 | filtered      | filtered      | 按表的查询条件过滤的行百分比，最大为 100，表示没有发生行过滤                                                                                                                                                                                                                |
 | Extra         | (None)        | 附加信息                                                                                                                                                                                                                                                                    |
 
-### `select_type` 列对应的值
+#### `select_type` 列对应的值
 
 | `select_type` Value       | JSON Name                  | 说明                                                     |
 | ------------------------- | -------------------------- | -------------------------------------------------------- |
@@ -52,13 +53,13 @@ draft: false
 | UNCACHEABLE UNION         | cacheable(false)           | 不可缓存的子查询中的第二个或之后的查询                   |
 | DELETE / UPDATE / REPLACE |                            | 非 `SELECT` 类型的语句，展示的是语句类型                 |
 
-### `type` 列对应的值
+#### `type` 列对应的值
 
-#### system
+##### system
 
 该表只有一行（=系统表）。这是 const 连接类型的一个特例。
 
-#### const
+##### const
 
 该表最多有一个匹配行，在查询开始时读取。因为只有一行，优化器可以将这一行的值视为常量。const 非常快，因为只需要查询一次。
 当主键索引或唯一索引与常量比较时，将使用 const。例如下列查询：
@@ -68,7 +69,7 @@ select * from tb1_name where primary_key = 1;
 select * from tb1_name where primary_key_part1 = 1 and primary_key_part2 = 2;
 ```
 
-#### eq_ref
+##### eq_ref
 
 索引查找。对于先前表中的每个组合，都从该表中读取一行。这是除了 `system` 和 `const` 之外最好的连接类型。当连接使用索引的所有部分并且索引是 `PRIMARY KEY` 或 `UNIQUE NOT NULL` 类型时使用。
 
@@ -83,7 +84,7 @@ select * from ref_table, other_table
  and ref_table.key_column_part2 = 1;
 ```
 
-#### ref
+##### ref
 
 索引查找。对于先前表中行的每个组合，从该表中读取具有匹配索引值的所有行。如果连接仅使用键的最左前缀，或者如果键不是 `PRIMARY KEY` 或 `UNIQUE` 索引（也就是说，如果连接不能根据键值选择耽搁行），则使用 `ref`。如果使用的键值匹配几行，这是一个很好的连接类型。例如：
 
@@ -98,11 +99,11 @@ selct * from ref_table, other_table
  and ref_table.key_column_part2 = 1;
 ```
 
-#### fulltext
+##### fulltext
 
 使用全文索引执行连接。
 
-#### ref_or_null
+##### ref_or_null
 
 这种连接类型类似于 `ref`，但 MySQL 会额外搜索包含 `NULL` 的行。这种连接类型优化最常用语解析子查询，例如：
 
@@ -110,11 +111,11 @@ selct * from ref_table, other_table
 select * from ref_table where key_column = expr or key_column is null;
 ```
 
-#### index_merge
+##### index_merge
 
 此连接类型使用了索引合并优化。在这种情况下，输出行的 `key` 列包含了使用的索引列表，`key_len` 包含使用的索引的最长键部分列表。
 
-#### unique_subquery
+##### unique_subquery
 
 此类型替换 `eq_ref` 用于一下形式的某些 `IN` 查询：
 
@@ -124,17 +125,17 @@ value IN (SELECT primary_key FROM single_table WHERE some_expr)
 
 表示子查询的结果可以通过唯一索引获取。
 
-#### index_subquery
+##### index_subquery
 
 此类型类似于 `unique_subquery` ，区别是子查询使用非唯一索引。
 
-#### range
+##### range
 
 仅检索给定范围内的行，使用索引来选择行。输出行的 `key` 列指示使用了哪个索引。`key_len` 包含使用过的最长键部分。对于这种类型，`ref` 列是 NULL。
 
 range可能用于 `=, <>, >, >=, <=, IS NULL, <=>, BETWEEN, LIKE, IN` 操作中。
 
-#### index
+##### index
 
 此类型与下面的全表扫描 `ALL` 相同，区别是扫描了索引树。有两种情况：
 
@@ -143,37 +144,37 @@ range可能用于 `=, <>, >, >=, <=, IS NULL, <=>, BETWEEN, LIKE, IN` 操作中�
 
 当查询仅使用单个索引的列时，MySQL 可以使用该连接类型。
 
-#### all
+##### all
 
 全表扫描。这是性能最差的连接方式，应该尽量避免。
 
-### Extra 列的额外信息说明
+#### Extra 列的额外信息说明
 
 Extra 列在不同的场景下展示的信息很多。这里只列出一些常见的信息，更详细的内容参考[这里](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain-join-types)
 
-#### Using filesort
+##### Using filesort
 
 MySQL 必须执行额外的数据传递，以完成结果的检索排序。而不是按照索引次序从表中读取行。这意味着查询效率低下。
 MySQL 有两种文件排序算法，都可以在内存或磁盘上完成，因此出现这个信息并不意味着一定使用了磁盘排序。
 
-#### Using index
+##### Using index
 
 仅使用索引树中的信息查询，不需要执行额外的查找。也就是使用了覆盖索引优化。
 
-#### Using index condition
+##### Using index condition
 
 通过访问索引元组并首先测试它们以确定是否读取完整的表。以这种方式，索引信息用于延迟（下推）读取全表，具体参考[索引下推优化](https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html)。
 
-#### Using index for group-by
+##### Using index for group-by
 
 表示 MySQL 找到一个索引，可以用于检索 `group by` 或 `distinct` 查询的所有列，而无需对实际的表进行任何额外的磁盘访问。
 
-#### Using temporary
+##### Using temporary
 
 为了解析查询，MySQL 需要创建一个临时表用来保存结果。如果查询包含以不同方式列出的 `group by` 和 `order by`。这意味着查询效率低下。
 
-#### Using where
+##### Using where
 
 意味着 MySQL 服务器将在存储引擎检索行之后再进行过滤。
 
-# 优化实例
+## 优化实例
