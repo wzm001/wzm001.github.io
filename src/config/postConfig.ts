@@ -5,7 +5,7 @@ export const postConfig = {
   // 文章内容时效性提示
   outdatedWarning: {
     enabled: true,
-    days: 30,
+    days: 200,
   },
 
   // 文章页末尾显示的许可协议；留空时不显示
